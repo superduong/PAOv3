@@ -41,14 +41,40 @@ class ViewController: UIViewController {
         return bt
     }()
     
+    let btnCard: UIButton = {
+        let bt = UIButton()
+        bt.setTitle("CARD", for: .normal)
+        bt.setTitleColor(.white, for: .normal)
+        bt.backgroundColor = .mainPink
+        return bt
+    }()
+    
+    let btnBinary: UIButton = {
+        let bt = UIButton()
+        bt.setTitle("BINARY", for: .normal)
+        bt.setTitleColor(.mainPink, for: .normal)
+        bt.backgroundColor = .cyan
+        return bt
+    }()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupViews()
     }
     
+//    Action when device rotate
+    override func viewWillLayoutSubviews() {
+       
+    }
+    
     func setupViews(){
+//        set background color with image
+//        view.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "Home Background"))
+//        view.backgroundColor = UIColor(patternImage: "Home")
+//        Ẩn Navigation Bar
+//        navigationController?.setNavigationBarHidden(true, animated: false)
+        
         view.addSubview(btnPerson)
         btnPerson.translatesAutoresizingMaskIntoConstraints = false
         btnPerson.topAnchor.constraint(equalTo: view.topAnchor, constant: view.frame.height/8).isActive = true
@@ -84,6 +110,21 @@ class ViewController: UIViewController {
         btnPAO.centerYAnchor.constraint(equalTo: btnObject.centerYAnchor).isActive = true
         btnPAO.addTarget(self, action: #selector(btnPAOPress), for: .touchUpInside)
         
+        view.addSubview(btnCard)
+        btnCard.translatesAutoresizingMaskIntoConstraints = false
+        btnCard.topAnchor.constraint(equalTo: btnObject.bottomAnchor, constant: view.frame.height/10).isActive = true
+        btnCard.centerXAnchor.constraint(equalTo: btnObject.centerXAnchor).isActive = true
+        btnCard.heightAnchor.constraint(equalToConstant: view.frame.height/6).isActive = true
+        btnCard.widthAnchor.constraint(equalToConstant: view.frame.width/3).isActive = true
+        btnCard.addTarget(self, action: #selector(btnCardPress), for: .touchUpInside)
+        
+        view.addSubview(btnBinary)
+        btnBinary.translatesAutoresizingMaskIntoConstraints = false
+        btnBinary.leadingAnchor.constraint(equalTo: btnCard.trailingAnchor, constant: view.frame.width/6).isActive = true
+        btnBinary.widthAnchor.constraint(equalToConstant: view.frame.width/3).isActive = true
+        btnBinary.heightAnchor.constraint(equalToConstant: view.frame.height/6).isActive = true
+        btnBinary.centerYAnchor.constraint(equalTo: btnCard.centerYAnchor).isActive = true
+        btnBinary.addTarget(self, action: #selector(btnBinaryPress), for: .touchUpInside)
     }
 
     @objc func btnPersonPress(_sender: UIButton){
@@ -111,9 +152,26 @@ class ViewController: UIViewController {
     }
     
     @objc func btnPAOPress(_sender: UIButton){
-        print("here")
+        print("PAO")
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        let paoViewController = PaoViewController(collectionViewLayout: layout)
+        self.navigationController?.pushViewController(paoViewController, animated: true)
     }
-
     
+    @objc func btnCardPress(_sender: UIButton){
+        print("Card")
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        let cardViewController = CardViewController(collectionViewLayout: layout)
+        self.navigationController?.pushViewController(cardViewController, animated: true)
+    }
+    
+    @objc func btnBinaryPress(_sender: UIButton){
+        print("Binary")
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        let binaryViewController = BinaryController(collectionViewLayout: layout)
+        self.navigationController?.pushViewController(binaryViewController, animated: true)
+    }
 }
-

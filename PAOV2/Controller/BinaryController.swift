@@ -1,35 +1,32 @@
 //
-//  CardViewController.swift
+//  BinaryController.swift
 //  PAOV2
 //
-//  Created by Duong Do Van on 4/11/19.
+//  Created by Duong Do Van on 4/12/19.
 //  Copyright © 2019 Duong Do Van. All rights reserved.
 //
 
 import UIKit
 
-struct Card {
+struct Binary {
     let imgName: String
-    let imgCard: String
-    let imgName2: String
-    let imgCard2: String
-    let cardText: String
-    let cardText2: String
+    let imgBinary: String
+    let binaryText: String
 }
 
-class CardViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout  {
+class BinaryController: UICollectionViewController, UICollectionViewDelegateFlowLayout  {
     
-    var questionsArray = [Card]()
+    var questionsArray = [Binary]()
     var score: Int = 0
     var currentQuestionNumber = 1
     
     var window: UIWindow?
     
-     var arrNumbers = Array(arrayLiteral: "01","02","03","04","11","12","13","14","21","22","23","24","31","32","33","34","41","42","43","44","51","52","53","54","61","62","63","64","65","66","67","68","71","72","73","74","49","45","trong","giap","81","82","83","84","Queen","Hilary","Macken","Trung","91","92","93","94")
+    var arrNumbers = Array(arrayLiteral: "00","01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63")
     
-     var arrNumberCards = Array(arrayLiteral: "001","002","003","004","011","012","013","014","021","022","023","024","031","032","033","034","041","042","043","044","051","052","053","054","061","062","063","064","065","066","067","068","071","072","073","074","075","076","077","078","081","082","083","084","085","086","087","088","091","092","093","094")
+    var arrBinarys = Array(arrayLiteral: "000000","000001","000010","000011","000100","000101","000110","000111","001000","001001","001010","001011","001100","001101","001110","001111","010000","010001","010010","010011","010100","010101","010110","010111","011000","011001","011010","011011","011100","011101","011110","011111","100000","100001","100010","100011","100100","100101","100110","100111","101000","101001","101010","101011","101100","101101","101110","101111","110000","110001","110010","110011","110100","110101","110110","110111","111000","111001","111010","111011","111100","111101","111110","111111")
     
-    var arrPersons = Array(arrayLiteral: "NICVJIC","ĐƯỜNG TĂNG","KIM ỦN ỈN","TỂ TƯỚNG LƯNG GÙ","NEYMAR","BILL GATES","ĐẶNG VĂN LÂM","CHƯ BẮT GIỚI","ANH XỜ TANH","TÂN HIỆP PHÁT","LÝ QUANG DIỆU","NOEL","TURING","COVEY","JACK CANFIELD","BRIAN TRACY","FU CÔN SƠN","BILL CLINTON","NAPOLEON HILL","ỔNG HẢI","RANIERI","PUTIN","FORREST GUMP","THÀNH LONG","PANDA","KENEDY","MOU NI NHÔ","PETER THIEL","ELON MUSK","AMSTRONG","KLOP","LUTHER KING","GUỐC ĐI AN NA","SUNDAR PICHAI","CARLOS","ADAM KHOO","BÁC HỒ","VÕ NGUYÊN GIÁP","NGUYỄN PHÚ TRỌNG","NGUYỄN XUÂN PHÚC","PHẠN NHẬT VƯỢNG","H XUÂN VINH","MS THẢO","CƠ BỚT","QUEEN","HILARY","MẮC KEN","TRƯNG","QUANG LIÊM","ALEX MULLEN","MỸ TÂM","CHÔNG GUÂY")
+     var arrPersons = Array(arrayLiteral: "NGƯỜI TUYẾT","NICVJIC","ĐƯỜNG TĂNG","KIM ỦN ỈN","TỂ TƯỚNG LƯNG GÙ","TRUMP","SIÊU NHÂN","RONADOL","GERRARD","SUARES","MESSI","NEYMAR","BILL GATES","ĐẶNG VĂN LÂM","CHƯ BẮT GIỚI","PÊ LÊ","PÁC MAN","OBAMA","EDISON","BUFFET","GIÁO HOÀNG","ANH XỜ TANH","TÂN HIỆP PHÁT","LÝ QUANG DIỆU","MARIAN RIVERA","BUZAN","MAN ĐÊ NAL","MẮC KEN","QUANG HUY","THẦY PHONG","JIM ROHN","TURING","COVEY","JACK CANFIELD","BRIAN TRACY","DIANA","HỒ NGỌC HÀ","MORGAN FREEMAN","KOFI ANNAN","TRỊNH VĂN QUYẾT","BÉT BA TỐP","FU CÔN SƠN","BILL CLINTON","NAPOLEON HILL","ỔNG HẢI","VÕ NGUYÊN GIÁP","ỔNG HIỆP","HILARY","GANDHI","BÁC HỒ","BRANDSON","RANIERI","PUTIN","FORREST GUMP","THÀNH LONG","DALE CA NE GIƠ","STEVEN JOB","PHÊ RÔ","BOLT","LÚT TI","TONY ROBBIN","PANDA","KENEDY","MOU NI NHÔ")
     
     
     let arrActions = Array(arrayLiteral: "BƠI","ĐỘI","HÔN","ÚP","ĂN VẠ","THẢ","CẦU NGUYỆN","HIẾP","GẶM","ƯỚP","CHƯNG","PHÁT","CODE","ĐẠP","MAY","HÁ","SẤY","VỒ","MỌC","ĐỔ","HIẾP","SĂN","GIẾT","CHỌC","LUYỆN","THIẾN","CÒNG","CHỊCH","ĐUA","BÊ","HÉT","TÁT","CÀO","LƯỚT","NGẬM","MÚT","MÚA","TÁT","HÓT","XÂY","LÉM","CƯỚP","ẤP","HẤP","VẪY","NÉM","VẠCH","TẠ ƠN","CƯỚI","NƯỚNG","NỔI","94")
@@ -40,8 +37,6 @@ class CardViewController: UICollectionViewController, UICollectionViewDelegateFl
     
     
     var dicNumberAction: Dictionary<String, String> = ["00":"LUỘC","01":"BƠI","02":"ĐỘI","03":"HÔN","04":"ÚP","05":"NƯỚNG","06":"RƠI","07":"CỞI TRẦN","08":"XOẠC","09":"CẮN","10":"VUNG","11":"ĂN VẠ","12":"THẢ","13":"CẦU NGUYỆN","14":"HIẾP","15":"HÚT","16":"NOCK OUT","17":"RẶN","18":"18","19":"TRADE","20":"KHÁM","21":"GẶM","22":"ƯỚP","23":"CHƯNG","24":"PHÁT","25":"VẼ","26":"ÔM","27":"CHỬI","28":"BÌNH","29":"ĐEO","30":"CHÙI","31":"CODE","32":"ĐẠP","33":"MAY","34":"HÁ","35":"35","36":"UỐN","37":"RƠI","38":"HÚT","39":"BAY","40":"VẢY","41":"SẤY","42":"VỒ","43":"MỌC","44":"ĐỔ","45":"NỔ","46":"KHOE","47":"GHEN","48":"TRẢ","49":"CƯA","50":"NÂNG","51":"HIẾP","52":"SĂN","53":"GIẾT","54":"CHỌC","55":"55","56":"BÓP","57":"VỚT","58":"XĂM","59":"NGẬM","60":"ĐẨY","61":"LUYỆN","62":"THIẾN","63":"CÒNG","64":"CHỊCH","65":"ĐUA","66":"BÊ","67":"HÉT","68":"TÁT","69":"HỈ","70":"NUỐT","71":"CÀO","72":"LƯỚT","73":"NGẬM","74":"MÚT","75":"MÚA","76":"TÁT","77":"HÓT","78":"XÂY","79":"HÍT","80":"CẠO","81":"LÉM","82":"CƯỚP","83":"ẤP","84":"HẤP","85":"VẪY","86":"NÉM","87":"VẠCH","88":"TẠ ƠN","89":"BÒ","90":"SỐC","91":"CƯỚI","92":"NƯỚNG","93":"NỔI","94":"94","95":"CHÉM","96":"TRÚT BỎ","97":"QUẦN","98":"CHỤP","99":"THỔI"]
-    
-   
     
     var dict:[String:[String]] = [:]
     
@@ -83,7 +78,7 @@ class CardViewController: UICollectionViewController, UICollectionViewDelegateFl
     
     func startTimer() {
         
-        _ = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(CardViewController.handleNext), userInfo: nil, repeats: true);
+        _ = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(BinaryController.handleNext), userInfo: nil, repeats: true);
         
     }
     
@@ -124,18 +119,16 @@ class CardViewController: UICollectionViewController, UICollectionViewDelegateFl
         
         self.navigationItem.title = "DƯƠNG VÔ ĐỊCH SIÊU TRÍ NHỚ 2019"
         
-//        for i in 0..<arrNumberCards.count {
-//            for j in 0..<arrPersons.count {
-//                print(arrNumbers[i] + " " + arrNumbers[j] + " ===== " + arrPersons[i] + " " + arrPersons[j] )
-//            }
-//        }
+        print(arrBinarys.count)
+        print(arrPersons.count)
+        print(arrNumbers.count)
         
         questionsArray = reloadData()
         
         //        setupBottomControls()
         
         collectionView?.backgroundColor = .white
-        collectionView.register(CardCell.self, forCellWithReuseIdentifier: "cellId")
+        collectionView.register(BinaryCell.self, forCellWithReuseIdentifier: "cellId")
         
         collectionView?.isPagingEnabled = true
         
@@ -151,8 +144,8 @@ class CardViewController: UICollectionViewController, UICollectionViewDelegateFl
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellId", for: indexPath) as! CardCell
-        cell.card = questionsArray[indexPath.row]
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellId", for: indexPath) as! BinaryCell
+        cell.binary = questionsArray[indexPath.row]
         //        cell.question=questionsArray[indexPath.row]
         //        cell.delegate = self as! QuizCVCellDelegate
         //        let page = pages[indexPath.item]
@@ -178,44 +171,44 @@ class CardViewController: UICollectionViewController, UICollectionViewDelegateFl
         return CGSize(width: view.frame.width, height: view.frame.height)
     }
     
-    func reloadData() -> [Card]{
-//        var arrayNumbersRandom: [String] = arrNumbers.shuffles()
+    func reloadData() -> [Binary]{
         
-        var cards: [Card] = []
+        var binarys: [Binary] = []
         
-        while arrNumbers.count > 0 {
+        while arrBinarys.count > 0 {
             
             // random key from array
-            let index = Int(arc4random_uniform(UInt32(arrNumbers.count)))
+            let index = Int(arc4random_uniform(UInt32(arrBinarys.count)))
             
-//            // your random number
-//            let randNum = [arrayKey]
+            //            // your random number
+            //            let randNum = [arrayKey]
             
-            let valueNumberCard: String = arrNumberCards[index]
             let valueNumber: String = arrNumbers[index]
             let valuePerson: String = arrPersons[index]
+            let valueBinary: String = arrBinarys[index]
             
             // make sure the number isnt repeated
-//            arrNumbers.removeAtIndex(index)
+            //            arrNumbers.removeAtIndex(index)
             arrNumbers.remove(at: index)
             arrPersons.remove(at: index)
-            arrNumberCards.remove(at: index)
-            let card = Card(imgName: valueNumberCard, imgCard: valueNumber, imgName2: valueNumberCard, imgCard2: valueNumber, cardText: valuePerson, cardText2: valuePerson)
-            cards.append(card)
+            arrBinarys.remove(at: index)
+
+            let binary = Binary(imgName: valueNumber, imgBinary: valueBinary, binaryText: valuePerson)
+            binarys.append(binary)
         }
-       /*
-        for index in 0 ..< arrNumbers.count {
-            print(index)
-            arrNumbers.shuffles()
-//            let index: Int = Int(arc4random_uniform(UInt32(arrNumbers.count)))
-            let valueNumberCard: String = arrNumberCards[index]
-            let valueNumber: String = arrNumbers[index]
-            let valuePerson: String = arrPersons[index]
-//            let valueAction: String = arrActions[index]
-//            let valueObject: String = arrObjects[index]
-            let card = Card(imgName: valueNumberCard, imgCard: valueNumber, cardText: valuePerson)
-            cards.append(card)
-        }*/
-        return cards
+        /*
+         for index in 0 ..< arrNumbers.count {
+         print(index)
+         arrNumbers.shuffles()
+         //            let index: Int = Int(arc4random_uniform(UInt32(arrNumbers.count)))
+         let valueNumberCard: String = arrNumberCards[index]
+         let valueNumber: String = arrNumbers[index]
+         let valuePerson: String = arrPersons[index]
+         //            let valueAction: String = arrActions[index]
+         //            let valueObject: String = arrObjects[index]
+         let card = Card(imgName: valueNumberCard, imgCard: valueNumber, cardText: valuePerson)
+         cards.append(card)
+         }*/
+        return binarys
     }
 }

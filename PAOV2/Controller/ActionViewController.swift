@@ -12,9 +12,9 @@ struct Action {
     let imgName: String
     let numberText: String
     let actionText: String
-    let correctAns: Int
-    var wrongAns: Int
-    var isAnswered: Bool
+//    let correctAns: Int
+//    var wrongAns: Int
+//    var isAnswered: Bool
 }
 
 class ActionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout  {
@@ -26,15 +26,14 @@ class ActionViewController: UICollectionViewController, UICollectionViewDelegate
     var window: UIWindow?
     
     var arr1 = Array(arrayLiteral: "SÔI","NICK","NÓN","MÔI","RỔ","LÒ","GỐI")
+
     
-    var dicNumberAction: Dictionary<String, String> = ["00":"LUỘC","01":"BƠI","02":"ĐỘI","03":"HÔN","04":"ÚP","05":"NƯỚNG","06":"RƠI","07":"CỞI TRẦN","08":"XOẠC","09":"CẮN","10":"VUNG",
-                                                       "11":"ĂN VẠ","12":"THẢ","13":"CẦU NGUYỆN","14":"HIẾP","15":"HÚT","16":"NOCK OUT","17":"RẶN","18":"18","19":"TRADE","20":"KHÁM","21":"GẶM","22":"ƯỚP","23":"CHƯNG","24":"PHÁT","25":"VẼ","26":"ÔM","27":"CHỬI","28":"BÌNH","29":"ĐEO","30":"CHÙI","31":"CODE","32":"ĐẠP","33":"MAY","34":"HÁ","35":"35","36":"UỐN","37":"RƠI","38":"HÚT","39":"BAY","40":"VẢY","41":"SẤY","42":"VỒ","43":"MỌC","44":"ĐỔ","45":"NỔ","46":"KHOE","47":"GHEN","48":"TRẢ","49":"CƯA","50":"NÂNG","51":"HIẾP","52":"SĂN","53":"GIẾT","54":"CHỌC","55":"55","56":"BÓP","57":"VỚT","58":"XĂM",
-                                                       "59":"NGẬM","60":"ĐẨY","61":"LUYỆN","62":"THIẾN","63":"CÒNG","64":"CHỊCH","65":"ĐUA","66":"BÊ","67":"HÉT","68":"TÁT","69":"HỈ","70":"NUỐT","71":"CÀO","72":"LƯỚT","73":"NGẬM","74":"MÚT","75":"MÚA","76":"TÁT","77":"HÓT","78":"XÂY","79":"HÍT","80":"CẠO","81":"LÉM","82":"CƯỚP","83":"ẤP","84":"HẤP","85":"VẪY","86":"NÉM",
-                                                       "87":"VẠCH","88":"TẠ ƠN","89":"BÒ",
-                                                       "90":"SỐC","91":"CƯỚI","92":"NƯỚNG","93":"NỔI","94":"94","95":"CHÉM",
-                                                       "96":"TRÚT BỎ","97":"QUẦN","98":"CHỤP","99":"THỔI"]
+    var dicNumberAction: Dictionary<String, String> = ["00":"LUỘC","01":"BƠI","02":"ĐỘI","03":"HÔN","04":"ÚP","05":"NƯỚNG","06":"RƠI","07":"CỞI TRẦN","08":"XOẠC","09":"CẮN","10":"BÚNG","11":"ĂN VẠ","12":"THẢ","13":"CẦU NGUYỆN","14":"HIẾP","15":"HÚT","16":"NOCK OUT","17":"RẶN","18":"18","19":"TRADE","20":"KHÁM","21":"GẶM","22":"ƯỚP","23":"CHƯNG","24":"PHÁT","25":"VẼ","26":"ÔM","27":"CHỬI","28":"BÌNH","29":"ĐEO","30":"CHÙI","31":"CODE","32":"ĐẠP","33":"MAY","34":"HÁ","35":"35","36":"UỐN","37":"RƠI","38":"HÚT","39":"BAY","40":"VẢY","41":"SẤY","42":"VỒ","43":"MỌC","44":"ĐỔ","45":"NỔ","46":"KHOE","47":"GHEN","48":"TRẢ","49":"CƯA","50":"NÂNG","51":"HIẾP","52":"SĂN","53":"GIẾT","54":"CHỌC","55":"55","56":"BÓP","57":"VỚT","58":"XĂM","59":"NGẬM","60":"ĐẨY","61":"LUYỆN","62":"THIẾN","63":"CÒNG","64":"CHỊCH","65":"ĐUA","66":"BÊ","67":"HÉT","68":"TÁT","69":"HỈ","70":"NUỐT","71":"CÀO","72":"LƯỚT","73":"NGẬM","74":"MÚT","75":"MÚA","76":"TÁT","77":"HÓT","78":"XÂY","79":"HÍT","80":"CẠO","81":"LÉM","82":"CƯỚP","83":"ẤP","84":"HẤP","85":"VẪY","86":"NÉM","87":"VẠCH","88":"TẠ ƠN","89":"BÒ","90":"SỐC","91":"CƯỚI","92":"NƯỚNG","93":"NỔI","94":"94","95":"CHÉM",
+"96":"TRÚT BỎ","97":"QUẦN","98":"CHỤP","99":"THỔI"]
     
-    let arrAction = Array(arrayLiteral: "LUỘC","BƠI","ĐỘI","HÔN","ÚP","NƯỚNG","RƠI","CỞI TRẦN","XOẠC","CẮN","VUNG","ĂN VẠ","THẢ","CẦU NGUYỆN","HIẾP","HÚT","NOCK OUT","RẶN","18","TRADE","KHÁM","GẶM","ƯỚP","CHƯNG","PHÁT","VẼ","ÔM","CHỬI","BÌNH","ĐEO","CHÙI","CODE","ĐẠP","MAY","HÁ","35","UỐN","RƠI","HÚT","BAY","VẢY","SẤY","VỒ","MỌC","ĐỔ","NỔ","KHOE","GHEN","TRẢ","CƯA","NÂNG","HIẾP","SĂN","GIẾT","CHỌC","55","BÓP","VỚT","XĂM","NGẬM","ĐẨY","LUYỆN","THIẾN","CÒNG","CHỊCH","ĐUA","BÊ","HÉT","TÁT","HỈ","NUỐT","CÀO","LƯỚT","NGẬM","MÚT","MÚA","TÁT","HÓT","XÂY","HÍT","CẠO","LÉM","CƯỚP","ẤP","HẤP","VẪY","NÉM","VẠCH","TẠ ƠN","BÒ","SỐC","CƯỚI","NƯỚNG","NỔI","94","CHÉM","TRÚT BỎ","QUẦN","CHỤP","THỔI")
+    var arrActions = Array(arrayLiteral: "LUỘC","BƠI","ĐỘI","HÔN","ÚP","NƯỚNG","RƠI","CỞI TRẦN","XOẠC","CẮN","VUNG","ĂN VẠ","THẢ","CẦU NGUYỆN","HIẾP","HÚT","NOCK OUT","RẶN","18","TRADE","KHÁM","GẶM","ƯỚP","CHƯNG","PHÁT","VẼ","ÔM","CHỬI","BÌNH","ĐEO","CHÙI","CODE","ĐẠP","MAY","HÁ","35","UỐN","RƠI","HÚT","BAY","VẢY","SẤY","VỒ","MỌC","ĐỔ","NỔ","KHOE","GHEN","TRẢ","CƯA","NÂNG","HIẾP","SĂN","GIẾT","CHỌC","55","BÓP","VỚT","XĂM","NGẬM","ĐẨY","LUYỆN","THIẾN","CÒNG","CHỊCH","ĐUA","BÊ","HÉT","TÁT","HỈ","NUỐT","CÀO","LƯỚT","NGẬM","MÚT","MÚA","TÁT","HÓT","XÂY","HÍT","CẠO","LÉM","CƯỚP","ẤP","HẤP","VẪY","NÉM","VẠCH","TẠ ƠN","BÒ","SỐC","CƯỚI","NƯỚNG","NỔI","94","CHÉM","TRÚT BỎ","QUẦN","CHỤP","THỔI")
+    
+    var arAction = Array(arrayLiteral: "00 ĐẬP","1.NICK NHẢY LÒ CÒ TRÁI TIM","NÓN","MÔI","RỔ","LÒ","GỐI","07.RONAL PLANK","08 GERRA VẤP NGÃ","09.SUAREZ CẮN","10.CHỈ 2  TAY","11 NEYMAR CHƠI CÙ TRỎ","12 GẾT LÁI TÀU NGẦM","13 CẦU NGUYỆN","14.BÁT GIỚI ĐU","15 PELE QUANG","16 PACMAN KNOCK OUT","17.OBAMA XOẮN","18 XÉ BỎ","19 BUFFET KHIÊU VŨ","20 GIÁO HOÀNG VIẾT","21 SỜ TANH NÈ LƯỠI","22 LAU CHÙI","23 VỠ NƯỚC MẮM","24 GÓI GHÉM","25 BUZAN VẼ NÚI LỬA","26 RƯỢT ĐUỔI","27.MẮC KEN VẶN VẸO","28 TÁN TỈNH","29 BÓP CÒI","30 JIM ROHN HI FIVE","31 ALAN TURING ĂN VỤNG","32 COVEY CHÔM ĐỒ","33 RỒ MÁY","34. HÁ MIỆNG","35 DIAN PHÁ BANH TỦ LẠNH","36 HNH CÀO CẤU RÙNG MÌNH","BỊ ĐUỔI BẮT","38 NÉM","39 BUSH CHƠI ĐÀN GUITAR","40 BÉT BA ẢO THUẬT","41 CÔN SƠN TẤN CÔNG","42 BILL CLINTON CẮM SỪNG","43 VĂNG","44 MR.HẢI NGỦ GẬT","45 BẪY","46.HIỆP HÍT","47 HILLARY ĐÁNH GHEN CẠO TRẠO ĐẦU","48 GANDHI ĂN MIẾNG TRẢ MIẾNG","49 MR.HỒ CƯA BOM","50 CÔNG QUÈ THỤI","51 ĐÁNH TRỐNG THỔI KÈN","52 PUTIN ĐANG NHỔ LÔNG NÁCH","53. XẢ SÚNG, NGOÁY, CHẠY","54 THÀNH LONG TRƯỞNG RA KHÓI, LÝ THÀNH LONG XIẾT","55 DALE QUẬY TƯNG BỪNG,VẪY","56 JOB BÓP","57 PHERO CẮT KÉO, LE","58. BOLT BẮN CHIM","59 CÁC LÔ SAY QUẮC CẦN CÂU","60 ROBBINS VẶN CỔ","61 ĐANG XÌ","62 ĐÀO, BẮT,  SỜ, NẾM, NGHE, NGỬI,","63 MOURDINHO BƠM HƠI","64 AMAZON CHÔM CHỈA KFC","65 ELON LẮC VÒNG","66 AMSTRONG ĐANG VUỐT, VỒ","67 KLOP TỨC GIẬN, NỔI ĐIÊN, ĐIÊN TIẾT","68 LUTHER KING ĐÂM LÉN","69 HOÀI LINH MÚA, ĐẨY","70 NHÀO LỘN","71. GOÁC ĐI ANA NHẬU","72 HOÁ TRANG","73 CÁ MẬP BAO VÂY","74 ADAM GÀI BẪY","75 TIẾN MINH HÀNH HẠ","76. XUÂN BẮC TÁT","77 KING KÔNG HÁT KARAOKE","78 BÁM","79 XỔNG CHUỒNG","80 BOMBA CHỌC, THỌC","81 MR.BEAN LEO TRÈO","82 CƯỚP","83 MS THẢO BỊT MẮT BẮT DÊ","84 MẮC QUẤT ROI VOI RỪNG","85 CÔNG VINH VÁI, LẠY","86 NADAL KÌ CỌ  ","87 HẰNG RUNG LẮC","88 KAKA QUAY","89.BALE DẬM CHÂN TẠI CHỖ","90 TE TUA OR CHƠI PES","91 LIÊM MỬA","92 MULLEN RUNG CHUÔNG","93 VẪY TAY","94 CHÔNG WAY CỨU CẦU","95. CÔNG PHƯỢNG ĐỌC RÁP","96.ÁNH VIÊN KHÓC","97.LÝ NAM GÀO THÉT","98 ZIDANCE TẨU THOÁT","CẮN MÁU")
     
     var arrNumbers = Array(arrayLiteral: "00","01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72","73","74","75","76","77","78","79","80","81","82","83","84","85","86","87","88","89","90","91","92","93","94","95","96","97","98","99")
     
@@ -95,9 +94,7 @@ class ActionViewController: UICollectionViewController, UICollectionViewDelegate
     
     
     func startTimer() {
-        
         _ = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(ActionViewController.handleNext), userInfo: nil, repeats: true);
-        
     }
     
     private lazy var pageControl: UIPageControl = {
@@ -134,10 +131,10 @@ class ActionViewController: UICollectionViewController, UICollectionViewDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.navigationItem.title = "DƯƠNG VÔ ĐỊCH SIÊU TRÍ NHỚ 2019"
         questionsArray = reloadData()
         
-        setupBottomControls()
+//        setupBottomControls()
         
         collectionView?.backgroundColor = .white
         collectionView.register(ActionCell.self, forCellWithReuseIdentifier: "cellId")
@@ -184,8 +181,8 @@ class ActionViewController: UICollectionViewController, UICollectionViewDelegate
     }
     
     func reloadData() -> [Action]{
-        var questions: [Action] = []
-        
+        var actions: [Action] = []
+        /*
         for _ in 0 ..< arrNumbers.count{
             // get random index
             let index: Int = Int(arc4random_uniform(UInt32(dicNumberAction.count)))
@@ -217,7 +214,6 @@ class ActionViewController: UICollectionViewController, UICollectionViewDelegate
             var correctIndex: Int = 0
             var strings = Array(dict.values)[0]
             for j in 0..<strings.count{
-                print(strings[j])
                 if strings[j] == randomValue {
                     correctIndex = j
                 }
@@ -226,8 +222,28 @@ class ActionViewController: UICollectionViewController, UICollectionViewDelegate
 //            let question = Action( imgName: dict.keys.first as! String, questionText: dict.keys.first as! String, paoText: randomValue, correctAns: correctIndex, wrongAns: -1, isAnswered: false)
             questions.append(question)
             dict.removeAll()
+        }*/
+        
+        while arrNumbers.count > 0 {
+            
+            // random key from array
+            let index = Int(arc4random_uniform(UInt32(arrNumbers.count)))
+            
+            //            // your random number
+            //            let randNum = [arrayKey]
+            
+            let valueAction: String = arAction[index]
+            let valueNumber: String = arrNumbers[index]
+            
+            // make sure the number isnt repeated
+            //            arrNumbers.removeAtIndex(index)
+            arrNumbers.remove(at: index)
+            arAction.remove(at: index)
+            let card = Action(imgName: valueNumber, numberText: valueNumber, actionText: valueAction)
+            actions.append(card)
         }
-        return questions
+        
+        return actions
     }
 
 }

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 extension Array {
     /// Picks `n` random elements (partial Fisher-Yates shuffle approach)
@@ -31,9 +32,17 @@ extension Array {
         return chosen
     }
     
-   
-    
+    mutating func shuffles() {
+        for i in 0..<self.count - 1 {
+            let t = self[i]
+            let r = Int.random(in: i + 1..<self.count)
+            
+            self[i] = self[r]
+            self[r] = t
+        }
+    }
 }
+
 
 extension Array where Element: Hashable {
     func pickUniqueInValue(_ n: Int) -> [Element] {
@@ -47,5 +56,24 @@ extension Array where Element: Hashable {
         
         return Array(set.prefix(upTo: set.index(set.startIndex, offsetBy: n)))
     }
-    
 }
+
+
+extension UIColor {
+    static var mainPink = UIColor(red: 232/255, green: 68/255, blue: 133/255, alpha: 1)
+}
+
+
+extension UIView {
+    func addConstraintsWithFormat(_ format: String, views: UIView...) {
+        var viewsDictionary = [String: UIView]()
+        for (index, view) in views.enumerated() {
+            let key = "v\(index)"
+            view.translatesAutoresizingMaskIntoConstraints = false
+            viewsDictionary[key] = view
+        }
+        
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: format, options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: viewsDictionary))
+    }
+}
+

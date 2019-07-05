@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:PAOV2.xcodeproj">
+      location = "self:/Users/helioit/Desktop/PAOV2/PAOV3.xcodeproj">
    </FileRef>
 </Workspace>

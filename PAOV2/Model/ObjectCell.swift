@@ -52,12 +52,12 @@ class ObjectCell: UICollectionViewCell {
         //        btnsArray = [btn1, btn2, btn3, btn4]
     }
     
-    @objc func btnOptionAction(sender: UIButton) {
-        guard let unwrappedQue = object else { return }
-        if !unwrappedQue.isAnswered {
-            delegate?.didChooseAnswer(btnIndex: sender.tag)
-        }
-    }
+//    @objc func btnOptionAction(sender: UIButton) {
+//        guard let unwrappedQue = object else { return }
+//        if !unwrappedQue.isAnswered {
+//            delegate?.didChooseAnswer(btnIndex: sender.tag)
+//        }
+//    }
     /*
      override func prepareForReuse() {
      btn1.backgroundColor=UIColor.white
@@ -82,14 +82,10 @@ class ObjectCell: UICollectionViewCell {
         lblNum.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -12).isActive=true
         lblNum.heightAnchor.constraint(equalToConstant: 100).isActive=true
         
-        
         addSubview(lblPao)
         lblPao.topAnchor.constraint(equalTo: imgView.bottomAnchor, constant: 1).isActive = true
         lblPao.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 12).isActive = true
         lblPao.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -12).isActive = true
-        
-        
-        
     }
     
     let imgView: UIImageView = {

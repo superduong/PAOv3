@@ -40,12 +40,12 @@ class QuizCVCell: UICollectionViewCell {
 //        btnsArray = [btn1, btn2, btn3, btn4]
     }
     
-    @objc func btnOptionAction(sender: UIButton) {
-        guard let unwrappedQue = question else { return }
-        if !unwrappedQue.isAnswered {
-            delegate?.didChooseAnswer(btnIndex: sender.tag)
-        }
-    }
+//    @objc func btnOptionAction(sender: UIButton) {
+//        guard let unwrappedQue = question else { return }
+//        if !unwrappedQue.isAnswered {
+//            delegate?.didChooseAnswer(btnIndex: sender.tag)
+//        }
+//    }
  /*
     override func prepareForReuse() {
         btn1.backgroundColor=UIColor.white

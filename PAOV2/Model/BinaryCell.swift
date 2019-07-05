@@ -1,18 +1,19 @@
+
 //
-//  ActionCell.swift
+//  BinaryCell.swift
 //  PAOV2
 //
-//  Created by Duong Do Van on 4/10/19.
+//  Created by Duong Do Van on 4/12/19.
 //  Copyright © 2019 Duong Do Van. All rights reserved.
 //
 
 import UIKit
 
-protocol ActionCVCellDelegate: class {
+protocol BinaryCVCellDelegate: class {
     func didChooseAnswer(btnIndex: Int)
 }
 
-class ActionCell: UICollectionViewCell {
+class BinaryCell: UICollectionViewCell {
     
     //    var myCollectionView: UICollectionView!
     
@@ -22,14 +23,14 @@ class ActionCell: UICollectionViewCell {
     var btn4: UIButton!
     var btnsArray = [UIButton]()
     
-    weak var delegate: ActionCVCellDelegate?
+    weak var delegate: BinaryCVCellDelegate?
     
-    var question: Action? {
+    var binary: Binary? {
         didSet {
-            guard let unwrappedQue = question else { return }
+            guard let unwrappedQue = binary else { return }
             imgView.image = UIImage(named: unwrappedQue.imgName)
-            lblNum.text = unwrappedQue.numberText
-            lblPao.text = unwrappedQue.actionText
+            lblNum.text = unwrappedQue.imgBinary
+            lblPao.text = unwrappedQue.binaryText
             /*
              btn1.setTitle(unwrappedQue.options[0], for: .normal)
              btn2.setTitle(unwrappedQue.options[1], for: .normal)
@@ -52,12 +53,12 @@ class ActionCell: UICollectionViewCell {
         //        btnsArray = [btn1, btn2, btn3, btn4]
     }
     
-//    @objc func btnOptionAction(sender: UIButton) {
-//        guard let unwrappedQue = question else { return }
-//        if !unwrappedQue.isAnswered {
-//            delegate?.didChooseAnswer(btnIndex: sender.tag)
-//        }
-//    }
+    //    @objc func btnOptionAction(sender: UIButton) {
+    //        guard let unwrappedQue = question else { return }
+    //        if !unwrappedQue.isAnswered {
+    //            delegate?.didChooseAnswer(btnIndex: sender.tag)
+    //        }
+    //    }
     /*
      override func prepareForReuse() {
      btn1.backgroundColor=UIColor.white
@@ -68,7 +69,7 @@ class ActionCell: UICollectionViewCell {
      */
     func setupViews() {
         addSubview(imgView)
-        imgView.topAnchor.constraint(equalTo: self.topAnchor, constant: self.frame.height/6).isActive=true
+        imgView.topAnchor.constraint(equalTo: self.topAnchor, constant: 50).isActive=true
         imgView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive=true
         imgView.widthAnchor.constraint(equalToConstant: self.frame.width).isActive=true
         imgView.heightAnchor.constraint(equalToConstant: self.frame.height/2).isActive = true
@@ -77,7 +78,7 @@ class ActionCell: UICollectionViewCell {
         
         addSubview(lblNum)
         //        lblQue.topAnchor.constraint(equalTo: imgView.bottomAnchor, constant: 1).isActive=true
-        lblNum.topAnchor.constraint(equalTo: self.topAnchor, constant: self.frame.height/6).isActive = true
+        lblNum.topAnchor.constraint(equalTo: self.topAnchor, constant: 150).isActive = true
         lblNum.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 12).isActive=true
         lblNum.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -12).isActive=true
         lblNum.heightAnchor.constraint(equalToConstant: 100).isActive=true
@@ -87,11 +88,10 @@ class ActionCell: UICollectionViewCell {
         lblPao.topAnchor.constraint(equalTo: imgView.bottomAnchor, constant: 1).isActive = true
         lblPao.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 12).isActive = true
         lblPao.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -12).isActive = true
-  
     }
     
     let imgView: UIImageView = {
-        let v=UIImageView()
+        let v = UIImageView()
         //        v.image = #imageLiteral(resourceName: "img2")
         v.contentMode = .scaleAspectFit
         v.translatesAutoresizingMaskIntoConstraints=false
@@ -102,17 +102,17 @@ class ActionCell: UICollectionViewCell {
         let lbl=UILabel()
         lbl.textColor = .red
         lbl.textAlignment = .center
-        lbl.font = UIFont.systemFont(ofSize: 46)
+        lbl.font = UIFont.systemFont(ofSize: 56)
         lbl.numberOfLines=4
         lbl.translatesAutoresizingMaskIntoConstraints=false
         return lbl
     }()
     
     let lblPao: UILabel = {
-        let lbl=UILabel()
-        lbl.textColor=UIColor.black
+        let lbl = UILabel()
+        lbl.textColor = .red
         lbl.textAlignment = .center
-        lbl.font = UIFont.systemFont(ofSize: 30)
+        lbl.font = UIFont.systemFont(ofSize: 36)
         lbl.numberOfLines=4
         lbl.translatesAutoresizingMaskIntoConstraints=false
         return lbl

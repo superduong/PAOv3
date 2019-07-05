@@ -20,7 +20,7 @@ class CompleteScreen: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.navigationItem.title = "DƯƠNG VÔ ĐỊCH SIÊU TRÍ NHỚ 2019"
         setupViews()
     }
     
@@ -33,16 +33,4 @@ class CompleteScreen: UIViewController {
         btnBackHome.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 1/6).isActive = true
         btnBackHome.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 1/4).isActive = true
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
